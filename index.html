@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
-<body  onload="initGame()">
+<body  onload="initGame()" oncontextmenu="return false;">
     <h1>The Minesweeper Game!</h1>
 <div class="buttons">
      <button onclick="chooseDifficulty(4)">Easy</button>
         <button onclick="chooseDifficulty(8)">Normal</button>
         <button onclick="chooseDifficulty(12)">Hard</button>
 </div>
+<div class="resatrt" onclick="initGame()">😁</div>
+<div class="timer"> <h2>Time: <span></span> </h2></div>
 <div class="table"></div>
 
 
