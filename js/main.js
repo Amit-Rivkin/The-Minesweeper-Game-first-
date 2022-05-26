@@ -69,14 +69,6 @@ function renderBoard(board) {
     elTable.innerHTML = strHTML
 }
 
-
-
-
-function getClassName(location) {
-    var cellClass = 'cell-' + location.i + '-' + location.j
-    return cellClass
-}
-
 function countNeighbors(cellI, cellJ, board) {
     var neighborsCount = 0;
     for (var i = cellI - 1; i <= cellI + 1; i++) {
@@ -108,6 +100,7 @@ function renderCell(location, value) {
     var cellSelector = '.' + getClassName(location)
     var elCell = document.querySelector(cellSelector)
     elCell.innerText = value
+    elCell.style.backgroundColor = "wheat"
 }
 
 function cellClicked(elCell, i, j) {
@@ -119,6 +112,7 @@ function cellClicked(elCell, i, j) {
     if (!gGame.isOn) return
     if (!gIntervalId) startTimer()
     if (cell.isMarked) return
+    if (cell.isShown) return
     if (!cell.isMine && !cell.isShown) {
         cell.isShown = true
         renderCell({ i, j }, cell.minesAroundCount)
@@ -165,6 +159,7 @@ function cellMarked(elCell, i, j) {
         cell.isMarked = false
         elCell.innerText = ''
         renderCell({ i, j }, '')
+        elCell.style.backgroundColor = ''
         checkWin()
     } else {
         cell.isMarked = true
@@ -242,11 +237,11 @@ function revealMines() {
                 renderCell({ i, j }, MINE)
             }
         }
-       
+
     }
 }
 
-function safeClick(){
+function safeClick() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var cell = gBoard[i][j]
@@ -286,4 +281,8 @@ function resetTimer() {
     if (gIntervalId) clearInterval(gIntervalId)
     gStartTime = 0
     gIntervalId = 0
+}
+function getClassName(location) {
+    var cellClass = 'cell-' + location.i + '-' + location.j
+    return cellClass
 }
