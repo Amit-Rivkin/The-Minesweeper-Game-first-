@@ -19,7 +19,8 @@ function initGame() {
         isOn: true,
         lives: 3,
         IsVictory: false,
-        isFirstClick: true
+        isFirstClick: true,
+        safeClick: 3
     }
     var elLive = document.querySelector('.live span')
     elLive.innerText = gGame.lives
@@ -242,17 +243,37 @@ function revealMines() {
 }
 
 function safeClick() {
+    if (gGame.safeClick === 0) return
+    gGame.safeClick--
+    var safeCells = []
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var cell = gBoard[i][j]
-
+            if (!cell.isMine && !cell.isShown) {
+                var newPos = { i, j }
+                safeCells.push(newPos)
+            }
         }
     }
+
+    
+    var randomNum = getRandomInt(0, safeCells.length)
+    var randomCell = safeCells[randomNum]
+    var elCell = document.querySelector(`.cell-${randomCell.i}-${randomCell.j}`)
+    console.log(elCell);
+    elCell.classList.add('safe-click')
+    var elBtn = document.querySelector('.buttons span')
+    elBtn.innerText = gGame.safeClick
+    setTimeout(() => {
+        elCell.classList.remove('safe-click')
+    }, 700);
+
 }
 
 function updateLives() {
     var elLive = document.querySelector('.live span')
     elLive.innerText = gGame.lives
+
 }
 
 
@@ -264,7 +285,6 @@ function startTimer() {
     gStartTime = Date.now()
     gIntervalId = setInterval(updateTime, 80)
 }
-
 
 function updateTime() {
     var now = Date.now()

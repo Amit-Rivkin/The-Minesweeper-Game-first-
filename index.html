@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,26 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
-<body  onload="initGame()" oncontextmenu="return false;">
+
+<body onload="initGame()" oncontextmenu="return false;">
     <h1>The Minesweeper Game!</h1>
     <div class="img"></div>
-<div class="buttons">
-     <button onclick="chooseDifficulty(4)">Easy</button>
+    <div class="buttons">
+        <button onclick="chooseDifficulty(4)">Easy</button>
         <button onclick="chooseDifficulty(8)">Normal</button>
         <button onclick="chooseDifficulty(12)">Hard</button>
-</div>
-<div class="restart" onclick="initGame()"> <span>😁</span> </div>
-<div class="timer"> <h2>Time: <span></span> </h2></div>
-<div class="live"> <h2> live: <span>3</span></h2> </div>
-<div class="table"></div>
+        <button onclick="safeClick()">Safe Click: <span>3</span></button>
+    </div>
+    <div class="restart" onclick="initGame()"> <span>😁</span> </div>
+    <div class="timer">
+        <h2>Time: <span></span> </h2>
+    </div>
+    <div class="live">
+        <h2> live: <span>3</span></h2>
+    </div>
+    <div class="table"></div>
 
-
-<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
