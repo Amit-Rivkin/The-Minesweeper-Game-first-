@@ -9,8 +9,8 @@ h1 {
 }
 
 table {
-    height: 250px;
-    width: 250px;
+    height: 220px;
+    width: 220px;
     margin: auto;
     table-layout: fixed;
     position: relative;
@@ -21,6 +21,11 @@ td {
     width: 30px;
     height: 30px;
     text-align: center;
+    
+}
+td:hover{
+    background-color:rgb(126, 6, 6) ;
+    color: lightyellow;
 }
 
 .restart {
@@ -57,4 +62,7 @@ button {
     cursor: pointer;
     /* transform: scale(1.2);
     transition: .4s; */
+}
+.img{
+
 }

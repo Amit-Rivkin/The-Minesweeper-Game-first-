@@ -245,6 +245,16 @@ function revealMines() {
        
     }
 }
+
+function safeClick(){
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            var cell = gBoard[i][j]
+
+        }
+    }
+}
+
 function updateLives() {
     var elLive = document.querySelector('.live span')
     elLive.innerText = gGame.lives
